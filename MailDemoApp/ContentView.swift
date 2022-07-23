@@ -39,6 +39,12 @@ struct ContentView: View {
                                     )
                 )
             }
+            .sheet(isPresented: $showComposeMessageView, content: {
+                ZStack {
+                    Color.blue
+                    Text("✍🏼")
+                }
+            })
             .tabItem {
                 Image(systemName: "envelope.fill")
                 Text("Inbox")
