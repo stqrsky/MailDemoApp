@@ -7,10 +7,64 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        TabView {
+            
+            NavigationView {
+                
+                List(0..<4) {
+                    _ in
+                    
+                    NavigationLink(destination: Text("Nachrichtentext")) {
+                        SingleMessageView()
+                    }
+                    
+                }
+                .listStyle(GroupedListStyle())
+                .navigationTitle("Inbox")
+                
+            }
+            .tabItem {
+                Text("Inbox")
+            }
+            
+            
+        }
+    }
+}
+
+struct SingleMessageView: View {
+    var body: some View {
+        
+        HStack {
+            Image(systemName: "person.crop.circle.fill")
+                .resizable()
+                .frame(width: 42, height: 42)
+                .foregroundColor(.blue)
+            
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    Text("Absender")
+                        .font(Font.headline)
+                    
+                    Spacer()
+                    
+                    Text("2020-11-04")
+                        .font(Font.subheadline.monospacedDigit())
+                        .foregroundColor(.secondary)
+                }
+                
+                Text("Betreffzeile abcdefgh")
+                    .font(Font.subheadline)
+                    .lineLimit(1)
+            }
+        }
+        
     }
 }
 
