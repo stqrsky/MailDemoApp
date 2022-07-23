@@ -29,8 +29,15 @@ struct ContentView: View {
                 
             }
             .tabItem {
+                Image(systemName: "envelope.fill")
                 Text("Inbox")
             }
+            
+            Text("Sent")
+                .tabItem {
+                    Image(systemName: "paperplane.fill")
+                    Text("Sent")
+                }
             
             
         }
