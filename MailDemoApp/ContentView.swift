@@ -10,10 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var showComposeMessageView: Bool = false
+    
     var body: some View {
         
         TabView {
             
+            // Ersten Tab
             NavigationView {
                 
                 List(0..<4) {
@@ -26,13 +29,22 @@ struct ContentView: View {
                 }
                 .listStyle(GroupedListStyle())
                 .navigationTitle("Inbox")
-                
+                .navigationBarItems(trailing:
+                                        Button(action: {
+                                            showComposeMessageView
+                                                .toggle()
+                                        }, label: {
+                                            Image(systemName: "square.and.pencil")
+                                        }
+                                    )
+                )
             }
             .tabItem {
                 Image(systemName: "envelope.fill")
                 Text("Inbox")
             }
             
+            // Zweiter Tab
             Text("Sent")
                 .tabItem {
                     Image(systemName: "paperplane.fill")
